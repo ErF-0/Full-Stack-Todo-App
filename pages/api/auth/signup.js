@@ -17,14 +17,12 @@ const handler = async (req, res) => {
   }
   const hashedPassword = await hashPassword(password);
   const newUser = await TodoUser.create({
-    email: email,
+    email: email.toLowerCase(),
     password: hashedPassword,
   });
-  res
-    .status(201)
-    .json({
-      status: "success",
-      message: "Account created successfully, Welcome to our site",
-    });
+  res.status(201).json({
+    status: "success",
+    message: "Account created successfully, Welcome to our site",
+  });
 };
 export default handler;

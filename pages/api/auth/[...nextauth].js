@@ -11,7 +11,7 @@ const authOption = {
         const { email, password } = credentials;
         await connectDB();
         if (!email || !password) throw new Error("Invalid Data!");
-        const user = await TodoUser.findOne({ email });
+        const user = await TodoUser.findOne({ email: email.toLowerCase() });
         if (!user) throw new Error("User doesn't exist");
         const isValid = await verifyPassword(password, user.password);
         if (!isValid) throw new Error("email or password is incorrect");
