@@ -16,7 +16,9 @@ const TaskList = ({ data, back, next, fetching }) => {
       {data?.map((todo) => (
         <div key={todo._id} className="tasks__card">
           <span className={todo.status}></span>
-          <RiMastodonLine />
+          <span className="task-icon">
+            <RiMastodonLine />
+          </span>
           <h4>{todo.title}</h4>
           <div>
             {back ? (

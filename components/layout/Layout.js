@@ -1,11 +1,9 @@
-import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-//icons
-import { VscListSelection } from "react-icons/vsc";
-import { BiMessageSquareAdd } from "react-icons/bi";
-import { RxDashboard } from "react-icons/rx";
+import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
 import { ToastContainer } from "react-toastify";
+import Sidebar from "@/components/module/Sidebar";
+import MobileNavigation from "@/components/module/MobileNavigation";
 
 const Layout = ({ children }) => {
   const { status } = useSession();
@@ -25,39 +23,17 @@ const Layout = ({ children }) => {
         ) : null}
       </header>
       <main className="container--main">
-        <aside>
-          <p>Welcome 👋</p>
-          <div>
-            <ul>
-              <li>
-                <VscListSelection />
-                <Link href="/">Todos</Link>
-              </li>
-              <li>
-                <BiMessageSquareAdd />
-                <Link href="/add-todo">Add Todo</Link>
-              </li>
-              <li>
-                <RxDashboard />
-                <Link href="/profile">Profile</Link>
-              </li>
-            </ul>
-            <footer>
-              <p>
-                Made with 💗 by{" "}
-                <a
-                  href="https://github.com/ErF-0"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  ERFaN
-                </a>{" "}
-              </p>
-            </footer>
-          </div>
+        <aside className="sidebar">
+          <Sidebar />
         </aside>
         <section>{children}</section>
       </main>
+      {/* mobile navigation */}
+      <div>
+        <div className="mobile-container">
+          <MobileNavigation />
+        </div>
+      </div>
       <ToastContainer />
     </div>
   );
