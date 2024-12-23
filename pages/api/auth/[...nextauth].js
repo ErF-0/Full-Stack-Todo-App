@@ -4,6 +4,7 @@ import connectDB from "@/utils/connectDB";
 import TodoUser from "@/models/TodoUser";
 import { verifyPassword } from "@/utils/auth";
 const authOption = {
+  secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
   providers: [
     CredentialsProvider({
